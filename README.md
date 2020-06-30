@@ -72,6 +72,47 @@ int StrToInt(const char* str) {
 
 
 
+## 求链表中的倒数第k个节点
+
+思路：
+
++ 两个指针，第一个指针走k-1步
++ 两个指针一起走
++ 第一个指针走到尾节点时，第二个指针指向倒数第k个节点
+
+```c
+ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
+    if(pListHead == NULL)
+        return NULL;
+    if(!k)
+        return NULL;
+    
+    ListNode* pAhead = pListHead;
+    ListNode* pBehind = pListHead;
+    
+    for(unsigned int i=0; i< k-1;i++) {
+        pAhead=pAhead->m_pNext;
+    }
+    
+    while(pAhead->m_pNext!=NULL) {
+        pAhead=pAhead->m_pNext;
+        pBehind=pBehind->m_pNext;
+    }
+    
+    return pBehind;
+}
+```
+
+
+
+
+
+## [剑指 Offer 09. 用两个栈实现队列](https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/)
+
+用两个栈实现一个队列。队列的声明如下，请实现它的两个函数 appendTail 和 deleteHead ，分别完成在队列尾部插入整数和在队列头部删除整数的功能。(若队列中没有元素，deleteHead 操作返回 -1 )
+
+
+
 
 
 
